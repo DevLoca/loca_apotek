@@ -1,0 +1,8 @@
+[2022-08-30 14:19:34] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Some of the columns are missing. Please, use latest CSV file template.  
+[2022-08-30 14:22:19] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Invalid value for PRODUCT TYPE in row no. 1  
+[2022-08-30 14:32:31] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Invalid value for PRODUCT TYPE in row no. 1  
+[2022-08-30 14:33:06] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Some of the columns are missing. Please, use latest CSV file template.  
+[2022-08-30 14:35:17] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Some of the columns are missing. Please, use latest CSV file template.  
+[2022-08-30 14:35:25] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Some of the columns are missing. Please, use latest CSV file template.  
+[2022-08-30 14:36:02] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:Invalid value for PRODUCT TYPE in row no. 1  
+[2022-08-30 14:48:38] local.EMERGENCY: File:/home/apotektb/public_html/portal.apotektbs.com/app/Http/Controllers/ImportProductsController.phpLine:583Message:11265 SKU already exist in row no. 1  
