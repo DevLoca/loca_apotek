@@ -1165,8 +1165,10 @@ class ProductUtil extends Util
             // var_dump($data);
             // exit();
             $new_quantity = $this->num_uf($data['quantity']) * $multiplier;
+            $new_quantity_bagi = $this->num_uf($data['quantitybagi']) * $multiplier;
 
             $new_quantity_f = $this->num_f($new_quantity);
+            $new_quantity_bagi_f = $this->num_f($new_quantity_bagi);
             $old_qty = 0;
             //update existing purchase line
             if (isset($data['purchase_line_id'])) {
@@ -1188,6 +1190,7 @@ class ProductUtil extends Util
             }
             
             $purchase_line->quantity = $new_quantity;
+            $purchase_line->bagi = $this->num_uf($data['quantitybagi'], $currency_details);
             $purchase_line->pp_without_discount = ($this->num_uf($data['pp_without_discount'], $currency_details)*$exchange_rate) / $multiplier;
             $purchase_line->discount_percent = $this->num_uf($data['discount_percent'], $currency_details);
             $purchase_line->discount_percent_2 = $this->num_uf($data['discount_percent_2'], $currency_details);
@@ -1226,7 +1229,7 @@ class ProductUtil extends Util
                 if (isset($data['default_sell_price'])) {
                     $variation_data['sell_price_inc_tax'] = ($this->num_uf($data['default_sell_price'], $currency_details)) / $multiplier;
                 }
-                $variation_data['pp_without_discount'] = ($this->num_uf($data['pp_without_discount'], $currency_details)*$exchange_rate) / $multiplier;
+                $variation_data['pp_without_discount'] = ($this->num_uf($data['purchase_price'], $currency_details)*$exchange_rate) / $multiplier;
                 $variation_data['variation_id'] = $purchase_line->variation_id;
                 $variation_data['purchase_price'] = $purchase_line->purchase_price;
              

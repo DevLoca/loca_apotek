@@ -45,6 +45,16 @@
                     data-msg-max-value="{{__('lang_v1.max_quantity_quantity_allowed', ['quantity' => $max_quantity])}}" 
                 @endif
             >
+            <input type="text" 
+                name="purchases[{{$row_count}}][quantitybagi]" 
+                value="{{@format_quantity(1)}}"
+                class="form-control input-sm purchase_quantity_bagi input_number mousetrap"
+                required
+                data-rule-abs_digit={{$check_decimal}}
+                data-msg-abs_digit="{{__('lang_v1.decimal_value_not_allowed')}}"
+                
+            >
+
 
 
             <input type="hidden" class="base_unit_cost" value="{{$variation->default_purchase_price}}">

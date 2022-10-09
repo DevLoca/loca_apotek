@@ -246,6 +246,53 @@ $(document).ready(function() {
         update_grand_total();
     });
 
+    $(document).on('change', '.purchase_quantity_bagi', function() {
+        var row = $(this).closest('tr');
+        var quantity_bagi = __read_number($(this), true);
+        var quantity = __read_number(row.find('input.purchase_quantity'), true);
+        var purchase_before_tax = __read_number(row.find('input.purchase_unit_cost'), true);
+        var purchase_after_tax = __read_number(
+            row.find('input.purchase_unit_cost_after_tax'),
+            true
+        );
+        var purchase_unit_cost_without_discount = __read_number(row.find('input.purchase_unit_cost_without_discount'), true);
+        
+
+        // var purchase_before_tax = 
+        var purchase_unit_cost = purchase_unit_cost_without_discount / quantity_bagi;
+
+        //Calculate sub totals
+        var sub_total_before_tax = quantity * purchase_before_tax;
+        var sub_total_after_tax =  quantity * purchase_after_tax;
+
+        row.find('.purchase_unit_cost').text(
+            __currency_trans_from_en(purchase_unit_cost, false, true)
+        );
+
+        __write_number(
+            row.find('input.purchase_unit_cost'),
+            purchase_unit_cost,
+            true
+        );
+
+        row.find('.row_subtotal_before_tax').text(
+            __currency_trans_from_en(sub_total_before_tax, false, true)
+        );
+        __write_number(
+            row.find('input.row_subtotal_before_tax_hidden'),
+            sub_total_before_tax,
+            true
+        );
+
+        row.find('.row_subtotal_after_tax').text(
+            __currency_trans_from_en(sub_total_after_tax, false, true)
+        );
+        __write_number(row.find('input.row_subtotal_after_tax_hidden'), sub_total_after_tax, true);
+
+        update_table_total();
+        update_grand_total();
+    });
+
     $(document).on('change', '.purchase_unit_cost_without_discount', function() {
         var purchase_before_discount = __read_number($(this), true);
 
@@ -1364,7 +1411,7 @@ $(document).ready(function() {
         var row = $(this).closest('tr');
         var profit_percent = __read_number($(this), true);
 
-        var purchase_unit_cost = __read_number(row.find('input.purchase_unit_cost_after_tax'), true);
+        var purchase_unit_cost = __read_number(row.find('input.purchase_unit_cost'), true);
         var default_sell_price =
             parseFloat(purchase_unit_cost) +
             __calculate_amount('percentage', profit_percent, purchase_unit_cost);
@@ -1638,7 +1685,7 @@ function update_inline_profit_percentage(row) {
     var exchange_rate = $('input#exchange_rate').val();
     default_sell_price_in_base_currency = default_sell_price / parseFloat(exchange_rate);
 
-    var purchase_after_tax = __read_number(row.find('input.purchase_unit_cost_after_tax'), true);
+    var purchase_after_tax = __read_number(row.find('input.purchase_unit_cost'), true);
     var profit_percent = __get_rate(purchase_after_tax, default_sell_price_in_base_currency);
     __write_number(row.find('input.profit_percent'), profit_percent, true);
 }
