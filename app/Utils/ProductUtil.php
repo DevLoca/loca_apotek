@@ -1167,6 +1167,8 @@ class ProductUtil extends Util
             $new_quantity = $this->num_uf($data['quantity']) * $multiplier;
             $new_quantity_bagi = $this->num_uf($data['quantitybagi']) * $multiplier;
 
+            $new_quantity = $this->num_uf($data['quantity']) * $this->num_uf($data['quantitybagi']);
+
             $new_quantity_f = $this->num_f($new_quantity);
             $new_quantity_bagi_f = $this->num_f($new_quantity_bagi);
             $old_qty = 0;
